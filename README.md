@@ -1,6 +1,4 @@
-![card](https://user-images.githubusercontent.com/29265684/92346944-c203fa00-f111-11ea-8f5d-23561bbf3ca0.png)
-
-### Magic Keyboard
+![banner](https://user-images.githubusercontent.com/29265684/92472260-915cb700-f21c-11ea-9faa-9f0cd73ebf54.png)
 
 > A free &amp; open-source keyboard for Android.
 
