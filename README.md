@@ -1,6 +1,6 @@
 ![banner](https://user-images.githubusercontent.com/29265684/92472260-915cb700-f21c-11ea-9faa-9f0cd73ebf54.png)
 
-> A free &amp; open-source keyboard for Android.
+> A free &amp; open-source keyboard for Android (pre-release).
 
 <a href="https://github.com/buffermet/buffermet.apk.magickeyboard/blob/master/SCREENSHOTS.md">Screenshots</a>
 
