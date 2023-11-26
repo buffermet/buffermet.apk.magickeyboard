@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 30
-    defaultConfig {
+  compileSdk 33
+  defaultConfig {
     applicationId "buffermet.apk.magickeyboard"
     minSdkVersion 14
     targetSdkVersion 30
     versionCode 2
-    versionName "1.0"
+    versionName "1.0.1"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -16,12 +16,12 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
-    namespace 'buffermet.apk.magickeyboard'
+  namespace 'buffermet.apk.magickeyboard'
 }
 
 dependencies {
-  implementation 'androidx.appcompat:appcompat:1.2.0'
-  implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+  implementation 'androidx.appcompat:appcompat:1.6.1'
+  implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test:runner:1.2.0'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

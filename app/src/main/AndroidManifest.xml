@@ -1,7 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
     <uses-permission android:name="android.permission.VIBRATE" />
-
     <application android:name=".AppContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,15 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".AppsListActivity"
             android:exported="false"
             android:launchMode="singleInstance"/>
-
         <activity android:name=".SettingsActivity"
             android:exported="false"
             android:launchMode="singleInstance"/>
-
         <service android:name=".MagicKeyboardService"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
