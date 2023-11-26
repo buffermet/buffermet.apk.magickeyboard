@@ -20,6 +20,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 
@@ -256,8 +257,8 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
 
   private String foregroundPackageName;
 
+  private int currentInputActionId; // 0=recent 1=people 2=animals 3=food 4=sport 5=travel 6=objects 7=symbols 8=flags
   private int currentEmojiCategory;
-  // 0=recent 1=people 2=animals 3=food 4=sport 5=travel 6=objects 7=symbols 8=flags
 
   protected static String fillBackground = "000000";
   protected static String fillKey = "000000";
@@ -797,17 +798,32 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
             resetShiftKey();
             break;
           case -4: // return
+            final EditorInfo editorInfo = getCurrentInputEditorInfo();
             if (shift) {
               shift = false;
-              ic.sendKeyEvent(new KeyEvent(
-                0,
-                0,
-                KeyEvent.ACTION_DOWN,
-                KeyEvent.KEYCODE_ENTER,
-                0,
-                KeyEvent.META_SHIFT_ON));
+              if (editorInfo.actionId == EditorInfo.IME_ACTION_SEARCH) {
+                ic.sendKeyEvent(new KeyEvent(
+                    0,
+                    0,
+                    KeyEvent.ACTION_DOWN,
+                    KeyEvent.KEYCODE_SEARCH,
+                    0,
+                    KeyEvent.META_SHIFT_ON));
+              } else {
+                ic.sendKeyEvent(new KeyEvent(
+                    0,
+                    0,
+                    KeyEvent.ACTION_DOWN,
+                    KeyEvent.KEYCODE_ENTER,
+                    0,
+                    KeyEvent.META_SHIFT_ON));
+              }
             } else {
-              sendKeyDown(ic, KeyEvent.KEYCODE_ENTER);
+              if (editorInfo.actionId == EditorInfo.IME_ACTION_SEARCH) {
+                sendKeyDown(ic, KeyEvent.KEYCODE_SEARCH);
+              } else {
+                sendKeyDown(ic, KeyEvent.KEYCODE_ENTER);
+              }
             }
             keyboardView.invalidateAllKeys();
             break;
@@ -2893,9 +2909,15 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
     switch (keyCode) {
       case -9994: // search
       case -4:    // return
-        sendKeyUp(
-          getCurrentInputConnection(),
-          KeyEvent.KEYCODE_ENTER);
+        if (getCurrentInputEditorInfo().actionId == EditorInfo.IME_ACTION_SEARCH) {
+          sendKeyUp(
+              getCurrentInputConnection(),
+              KeyEvent.KEYCODE_SEARCH);
+        } else {
+          sendKeyUp(
+              getCurrentInputConnection(),
+              KeyEvent.KEYCODE_ENTER);
+        }
         break;
     }
 
