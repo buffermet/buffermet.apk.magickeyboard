@@ -257,8 +257,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
 
   private String foregroundPackageName;
 
-  private int currentInputActionId; // 0=recent 1=people 2=animals 3=food 4=sport 5=travel 6=objects 7=symbols 8=flags
-  private int currentEmojiCategory;
+  private int currentEmojiCategory; // 0=recent 1=people 2=animals 3=food 4=sport 5=travel 6=objects 7=symbols 8=flags
 
   protected static String fillBackground = "000000";
   protected static String fillKey = "000000";
