@@ -20,6 +20,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 
@@ -667,6 +668,13 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
             resetShiftKey();
             break;
           case -4: // return
+            final int actionId = getCurrentInputEditorInfo().imeOptions
+                & EditorInfo.IME_MASK_ACTION;
+            if (
+                 actionId == EditorInfo.IME_ACTION_DONE
+              || actionId == EditorInfo.IME_ACTION_GO
+              || actionId == EditorInfo.IME_ACTION_SEARCH
+            ) sendDefaultEditorAction(true);
             if (shift) {
               shift = false;
               ic.sendKeyEvent(new KeyEvent(
