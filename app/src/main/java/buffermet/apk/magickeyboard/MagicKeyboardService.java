@@ -670,11 +670,13 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
           case -4: // return
             final int actionId = getCurrentInputEditorInfo().imeOptions
                 & EditorInfo.IME_MASK_ACTION;
-            if (
-                 actionId == EditorInfo.IME_ACTION_DONE
-              || actionId == EditorInfo.IME_ACTION_GO
-              || actionId == EditorInfo.IME_ACTION_SEARCH
-            ) sendDefaultEditorAction(true);
+            switch (actionId) {
+              case EditorInfo.IME_ACTION_DONE:
+              case EditorInfo.IME_ACTION_GO:
+              case EditorInfo.IME_ACTION_SEARCH:
+                sendDefaultEditorAction(true);
+                break;
+            }
             if (shift) {
               shift = false;
               ic.sendKeyEvent(new KeyEvent(
