@@ -24,7 +24,7 @@
                 android:layout_height="24dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_arrow_back_black_24dp"
-                android:tint="#fff"
+                app:tint="#fff"
                 android:contentDescription="GO BACK"/>
         </RelativeLayout>
         <TextView

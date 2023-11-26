@@ -15,7 +15,7 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 
 class DebugService {
-  private static void debug(final String message) {
+  static void debug(final String message) {
     Toast.makeText(AppContext.getContext(), "debug\n\n" + message, Toast.LENGTH_LONG).show();
     Log.i("$$$ $$$ $$$", message);
   }
