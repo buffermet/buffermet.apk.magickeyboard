@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -62,6 +63,7 @@ public class MagicKeyboardView extends KeyboardView {
 
       final Drawable drawableKey = getResources().getDrawable(R.drawable.empty);
       switch (key.codes[0]) {
+        case 9999:
         case -1:
         case -9996:
         case -9997:

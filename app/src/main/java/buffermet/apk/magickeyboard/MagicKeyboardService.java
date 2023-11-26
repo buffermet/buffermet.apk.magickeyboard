@@ -250,9 +250,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
   final private Runnable runnableLongPressWatcher = new Runnable() {
     @Override
     public void run() {
-      if (keyPressed) {
-        MagicKeyboardService.this.onKeyLongPress(lastPressedKeyCode);
-      }
+      if (keyPressed) MagicKeyboardService.this.onKeyLongPress(lastPressedKeyCode);
     }
   };
 
@@ -342,15 +340,11 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
   }
 
   private void sendKeyDown(final InputConnection ic, final int keyCode) {
-    ic.sendKeyEvent(new KeyEvent(
-      KeyEvent.ACTION_DOWN,
-      keyCode));
+    ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, keyCode));
   }
 
   private void sendKeyUp(final InputConnection ic, final int keyCode) {
-    ic.sendKeyEvent(new KeyEvent(
-      KeyEvent.ACTION_UP,
-      keyCode));
+    ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, keyCode));
   }
 
   private void pressKey(final List<Keyboard.Key> keys, final int keyCode) {
@@ -367,6 +361,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
     for (Keyboard.Key key : keys) {
       if (key.codes[0] == -9996) { // alt
         key.on = false;
+        break;
       }
     }
     keyboardView.invalidateAllKeys();
@@ -378,6 +373,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
     for (Keyboard.Key key : keys) {
       if (key.codes[0] == -9997) { // ctrl
         key.on = false;
+        break;
       }
     }
     keyboardView.invalidateAllKeys();
@@ -390,6 +386,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
     for (Keyboard.Key key : keys) {
       if (key.codes[0] == -1) { // shift
         key.on = false;
+        break;
       }
     }
     keyboardView.invalidateAllKeys();
@@ -470,7 +467,8 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
       boolean hasSubLabel = false;
       switch (keyCode) {
         case -9998: // toggle
-          final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+          final InputMethodManager imm = (InputMethodManager) getSystemService(
+              Context.INPUT_METHOD_SERVICE);
           if (imm != null) {
             imm.showInputMethodPicker();
           }
@@ -741,6 +739,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
               for (Keyboard.Key key : keys) {
                 if (key.codes[0] == primaryCode) {
                   key.on = false;
+                  break;
                 }
               }
             } else {
@@ -748,6 +747,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
               for (Keyboard.Key key : keys) {
                 if (key.codes[0] == primaryCode) {
                   key.on = true;
+                  break;
                 }
               }
             }
@@ -759,6 +759,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
               for (Keyboard.Key key : keys) {
                 if (key.codes[0] == primaryCode) {
                   key.on = false;
+                  break;
                 }
               }
             } else {
@@ -766,6 +767,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
               for (Keyboard.Key key : keys) {
                 if (key.codes[0] == primaryCode) {
                   key.on = true;
+                  break;
                 }
               }
             }
@@ -777,6 +779,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
             for (Keyboard.Key key : keys) {
               if (key.codes[0] == primaryCode) {
                 key.codes[0] = -1;
+                break;
               }
             }
             keyboardView.invalidateAllKeys();
@@ -817,6 +820,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                 if (key.codes[0] == primaryCode) {
                   key.on = false;
                   key.codes[0] = -9995; // caps
+                  break;
                 }
               }
             } else {
@@ -826,6 +830,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
               for (Keyboard.Key key : keys) {
                 if (key.codes[0] == primaryCode) {
                   key.on = true;
+                  break;
                 }
               }
             }
@@ -844,6 +849,9 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
             } else {
               sendKeyDown(ic, KeyEvent.KEYCODE_TAB);
             }
+            break;
+          case 9999: // escape
+            sendKeyDown(ic, KeyEvent.KEYCODE_ESCAPE);
             break;
           default:
             char code = (char) primaryCode;
@@ -3787,6 +3795,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -3983,6 +3992,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -4133,6 +4143,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -4391,6 +4402,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -4574,6 +4586,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -4688,6 +4701,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -4871,6 +4885,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -5056,6 +5071,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -5239,6 +5255,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -5389,6 +5406,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -5647,6 +5665,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -5818,6 +5837,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -5968,6 +5988,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -6227,6 +6248,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -6381,6 +6403,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -6531,6 +6554,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
@@ -6667,6 +6691,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
                   case MotionEvent.ACTION_MOVE:
                     if (!hasTouchedFromModifier) {
                       switch (lastPressedKeyCode) {
+                        case 9999:  // escape
                         case -1:    // shift
                         case -4:    // return
                         case -5:    // backspace
