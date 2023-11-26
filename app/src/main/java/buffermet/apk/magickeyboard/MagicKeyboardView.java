@@ -11,7 +11,6 @@ import android.graphics.drawable.Drawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 
 import java.lang.reflect.Field;
 import java.util.List;
