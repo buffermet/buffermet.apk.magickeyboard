@@ -20,7 +20,6 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 
@@ -335,7 +334,7 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
       switch (keyCode) {
         case -9998: // toggle
           final InputMethodManager imm = (InputMethodManager) getSystemService(
-              Context.INPUT_METHOD_SERVICE);
+            Context.INPUT_METHOD_SERVICE);
           if (imm != null) {
             imm.showInputMethodPicker();
           }
@@ -669,23 +668,23 @@ public class MagicKeyboardService extends InputMethodService implements Keyboard
             break;
           case -4: // return
             final int actionId = getCurrentInputEditorInfo().imeOptions
-                & EditorInfo.IME_MASK_ACTION;
+              & 0x000000ff; // EditorInfo.IME_MASK_ACTION
             switch (actionId) {
-              case EditorInfo.IME_ACTION_DONE:
-              case EditorInfo.IME_ACTION_GO:
-              case EditorInfo.IME_ACTION_SEARCH:
+              case 0x00000006: // EditorInfo.IME_ACTION_DONE
+              case 0x00000002: // EditorInfo.IME_ACTION_GO
+              case 0x00000003: // EditorInfo.IME_ACTION_SEARCH
                 sendDefaultEditorAction(true);
                 break;
             }
             if (shift) {
               shift = false;
               ic.sendKeyEvent(new KeyEvent(
-                  0,
-                  0,
-                  KeyEvent.ACTION_DOWN,
-                  KeyEvent.KEYCODE_ENTER,
-                  0,
-                  KeyEvent.META_SHIFT_ON));
+                0,
+                0,
+                KeyEvent.ACTION_DOWN,
+                KeyEvent.KEYCODE_ENTER,
+                0,
+                KeyEvent.META_SHIFT_ON));
             } else {
               sendKeyDown(ic, KeyEvent.KEYCODE_ENTER);
             }
