@@ -1,5 +1,15 @@
 ![banner](https://user-images.githubusercontent.com/29265684/92472260-915cb700-f21c-11ea-9faa-9f0cd73ebf54.png)
 
+### Why use Magic Keyboard?
+
+This keyboard was inspired by the iOS tweak SwipeSelection by iKy1e (Kyle Howells). I've expanden upon this idea to enable vertical swiping and other gestures to improve your mobile typing experience, whether you are a developer or just text a lot.
+
+- Swipe keyboard to move cursor
+- Swipe keyboard while CTRL key is active to move cursor word per word
+- Swipe keyboard from modifier keys to select text
+- Swipe keyboard from modifier keys while CTRL key is active to select text word per word
+- Swipe to simulate arrow keys in a terminal
+
 > A free &amp; open-source keyboard for Android (pre-release).
 
 <a href="https://github.com/buffermet/buffermet.apk.magickeyboard/blob/master/SCREENSHOTS.md">Screenshots</a>
