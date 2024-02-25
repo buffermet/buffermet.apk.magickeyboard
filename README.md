@@ -6,13 +6,13 @@
 
 This keyboard was inspired by the iOS tweak SwipeSelection by iKy1e (Kyle Howells). I've expanded upon this idea to enable vertical swiping and other gestures to improve your mobile typing experience, whether you are a developer or just text a lot.
 
-- <code><b>NEW!</b></code> Escape key 
-- Horizontal and vertical swiping simulate arrow key presses
+- <code><b>NEW!</b></code> Escape key
+- Create multiple themes and workflows to match your keyboard with each app on your Android device
+- Swipe to simulate arrow keys (configurable to work everywhere (for terminals) or in-app text fields only)
 - Swipe keyboard to move cursor
 - Swipe keyboard while CTRL key is active to move cursor word per word
 - Swipe keyboard from modifier keys to select text
 - Swipe keyboard from modifier keys while CTRL key is active to select text word per word
-- Swipe to simulate arrow keys in a terminal
 
 <a href="https://github.com/buffermet/buffermet.apk.magickeyboard/blob/master/SCREENSHOTS.md">Screenshots</a>
 
