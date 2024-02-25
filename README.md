@@ -6,7 +6,7 @@
 
 This keyboard was inspired by the iOS tweak SwipeSelection by iKy1e (Kyle Howells). I've expanded upon this idea to enable vertical swiping and other gestures to improve your mobile typing experience, whether you are a developer or just text a lot.
 
-- <b><code style="color:red">NEW!</code></b> Escape key
+- ${\color{green}NEW}$ Escape key 
 - Horizontal and vertical swiping simulate arrow key presses
 - Swipe keyboard to move cursor
 - Swipe keyboard while CTRL key is active to move cursor word per word
