@@ -4,10 +4,10 @@
 
 ### Why use Magic Keyboard?
 
-This keyboard was inspired by the iOS tweak SwipeSelection by iKy1e (Kyle Howells). I've expanded upon this idea to enable vertical swiping and other gestures to improve your mobile typing experience, whether you are a developer or just text a lot.
+This keyboard was inspired by the iOS tweak SwipeSelection by iKy1e (Kyle Howells). I've expanded upon this idea to enable vertical swiping and other gestures to improve your mobile typing experience.
 
 - <code><b>NEW!</b></code> Escape key
-- Swipe keyboard to simulate arrow keys (configurable to work everywhere (for terminals) or in-app text fields only)
+- Swipe keyboard to simulate arrow keys (configurable to work everywhere (e.g. for terminals) or in-app text fields only)
 - Swipe keyboard to move cursor
 - Swipe keyboard while CTRL key is active to move cursor word per word
 - Swipe keyboard from modifier keys to select text
